@@ -20,7 +20,7 @@ import GlobalContextProvide from './context/GlobalContext';
 import productDetail from './components/ProductDetail';
 
 const client = new ApolloClient({
-  link: new HttpLink(),
+  uri: '/',
   cache: new InMemoryCache()
 });
 
