@@ -1,0 +1,21 @@
+.container {
+  background-color: #eee;
+  overflow: hidden;
+}
+.card-text {
+  text-decoration: none;
+  color: black;
+}
+.selected {
+  border: 1px solid #eee;
+}
+.selected:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.card-text,
+.card-name {
+  height: 70px;
+  overflow: hidden;
+}
