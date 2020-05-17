@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const getProductsQuery = gql`
-{
-  Product{
+query{
+  products{
     id,
     name,
     price,
@@ -10,11 +10,25 @@ export const getProductsQuery = gql`
     shortDesc,
     description
   }
+} 
+`;
+
+export const getProductQuery = gql`
+query ProductQuery($id:String!){
+  product(id:$id){
+    id
+    name,
+    price,
+    category,
+    shortDesc,
+    description
+  }  
 }
 `;
 
+
 export const addProductQuery = gql`
-mutation( $name:String!,$price:Float!, $category:String!, $shortDesc:String!, $description:String!){
+mutation addProductQuery( $name:String!,$price:Float!, $category:String!, $shortDesc:String!, $description:String!){
     addProduct(name:$name, price:$price, category:$category, shortDesc:$shortDesc, description:$description ){
     name,
     price,
@@ -25,15 +39,23 @@ mutation( $name:String!,$price:Float!, $category:String!, $shortDesc:String!, $d
 }
 `;
 
+export const deleteProductQuery = gql`
+mutation deleteProductQuery( $id:String!){
+    deleteProduct(id:$id){
+      id
+    }
+}
+`;
 
-// AddProduct( $name:String!, $price:Number!, $category:String!, $shortDesc:String!, $description:String!)
-// mutation {
-//   addProduct(name:$name, price:$price, category:$category, shortDesc:$shortDesc, description:$description ){
-//     name
-//     price
-//     category
-//     shortDesc
-//     description
-//   }
-// }
-// `;
+export const updateProductQuery = gql`
+mutation updateProductQuery( $id:String!,$name:String!,$price:Float!, $category:String!, $shortDesc:String!, $description:String!){
+    updateProduct(id:$id,name:$name, price:$price, category:$category, shortDesc:$shortDesc, description:$description ){
+    id,
+    name,
+    price,
+    category,
+    shortDesc,
+    description
+  }
+}
+`;

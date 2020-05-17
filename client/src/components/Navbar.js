@@ -17,7 +17,7 @@ export default function Navbar() {
           <Link className="nav-item nav-link" to="/toys">Toys</Link>
           <Link className="nav-item nav-link" to="/elctronics">Electronics</Link>
           <Link className="nav-item nav-link" to="/clothing">Clothing</Link>
-          <Link className="nav-item nav-link" to="/addItem">Add new item</Link>
+          <Link className="nav-item nav-link" to="/add">Add new product</Link>
         </div>
       </div>
     </nav>

@@ -1,22 +1,27 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import Navbar from './components/Navbar';
-import Home from './components/Home'
-import Health from './components/Health'
-import Kitchen from './components/Kitchen'
-import Toys from './components/Toys'
-import Elctronics from './components/Elctronics'
-import Clothing from './components/Clothing'
-import Error from './components/Error'
-import AddItem from './components/AddProduct';
+import Home from './pages/Home'
+import Health from './pages/Health'
+import Kitchen from './pages/Kitchen'
+import Toys from './pages/Toys'
+import Electronics from './pages/Electronics'
+import Clothing from './pages/Clothing'
+import Error from './pages/Error'
+import AddProduct from './components/AddProduct';
+import EditProduct from './components/EditProduct';
 
 import GlobalContextProvide from './context/GlobalContext';
+import productDetail from './components/ProductDetail';
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  link: new HttpLink(),
+  cache: new InMemoryCache()
 });
 
 function App() {
@@ -31,10 +36,12 @@ function App() {
               <Route path="/health" component={Health} />
               <Route path="/kitchen" component={Kitchen} />
               <Route path="/toys" component={Toys} />
-              <Route path="/Elctronics" component={Elctronics} />
+              <Route path="/Elctronics" component={Electronics} />
               <Route path="/clothing" component={Clothing} />
               <Route path="/clothing" component={Clothing} />
-              <Route path="/addItem" component={AddItem} />
+              <Route path="/add" component={AddProduct} />
+              <Route path="/edit/:id" component={EditProduct} />
+              <Route path="/:id" component={productDetail} />
               <Route component={Error} />
             </Switch>
           </div>
